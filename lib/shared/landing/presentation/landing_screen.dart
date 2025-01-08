@@ -15,10 +15,38 @@ class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: InteractiveViewer(
-          child: const ModelViewer(
-            src: "assets/models/sedan-car.glb",
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              Center(
+                child: SizedBox(
+                  height: context.mediaQuery.size.width,
+                  child: InteractiveViewer(
+                    child: const ModelViewer(
+                      src: "assets/models/sedan-car.glb",
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Center(
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    border: Border.all(color: Colors.black),
+                    color: Colors.grey.shade300
+                  ),
+                  child: Icon(
+                    CupertinoIcons.power,
+                    color: Colors.red,
+                  ),
+                ),
+              )
+            ],
           ),
         ),
       ),
